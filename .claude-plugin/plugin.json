@@ -1,0 +1,7 @@
+{
+  "name": "engineering-memory",
+  "version": "1.0.0",
+  "description": "Engineering Memory Standard: ADRs, feature evolution, bug and lesson records, root-cause debugging, and session handoffs so Claude Code never forgets how a long-lived project was built.",
+  "author": { "name": "Anoop" },
+  "keywords": ["adr", "documentation", "debugging", "memory", "claude-md"]
+}

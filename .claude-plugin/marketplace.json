@@ -1,0 +1,11 @@
+{
+  "name": "engineering-memory-marketplace",
+  "owner": { "name": "Anoop" },
+  "plugins": [
+    {
+      "name": "engineering-memory",
+      "source": "./",
+      "description": "Engineering Memory Standard for long-lived projects: ADRs, feature evolution, bugs, lessons, debugging protocol, handoffs."
+    }
+  ]
+}
