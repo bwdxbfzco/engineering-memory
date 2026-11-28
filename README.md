@@ -9,7 +9,7 @@ Engineering Memory Standard for long-lived projects: Claude Code keeps and uses 
 | Skill | skills/engineering-memory/SKILL.md | Auto-loads when debugging, changing logic, or answering how a feature works/worked |
 | Standard | skills/engineering-memory/STANDARD.md | Full standard; copied to docs/ENGINEERING-STANDARD.md on bootstrap |
 | Templates | skills/engineering-memory/templates/ | ADR, feature, algorithm, bug, lesson, design, incident, runbook, session, module CLAUDE.md, root rules, todo-debt |
-| Commands | commands/ | /engineering-memory:bootstrap, :debug, :decide, :feature-history, :lesson, :handoff, :audit-docs |
+| Commands | commands/ | /engineering-memory:bootstrap, :debug, :decide, :feature-history, :lesson, :handoff, :audit-docs, :diagram |
 | Hooks | hooks/hooks.json + scripts/ | Stop: blocks "done" once if code changed without doc updates. SessionStart: shows latest handoff. Both do nothing in repos without docs/adr/ |
 
 ## Install
@@ -52,9 +52,21 @@ Requirements: git, bash; `jq` recommended (the hook falls back to grep without i
 | "How did X work before?" | `/engineering-memory:feature-history <feature>` |
 | Claude got something wrong | `/engineering-memory:lesson <what went wrong>` |
 | Ending a long session / before /compact | `/engineering-memory:handoff` |
+| Draw or update an architecture/flow diagram | `/engineering-memory:diagram <subject> [--board]` |
 | Monthly | `/engineering-memory:audit-docs` |
 
 The skill and hooks also apply the rules automatically, without commands.
+
+## Diagrams and tldraw
+
+Mermaid inside the docs is the source of truth. `--board` also creates a tldraw board in docs/architecture/boards/ with an SVG export and a text summary.
+
+For boards, install a local tldraw MCP server (recommended, headless):
+```
+claude plugin marketplace add m9810223/tldraw-m9810223
+claude plugin install tldraw-m9810223@tldraw-m9810223
+```
+Exports use `npx @kitschpatrol/tldraw-cli ... --local` (needs Node). Never drop `--local`: without it the board is uploaded to tldraw.com. Close boards in the tldraw desktop app before `git pull`.
 
 ## Updating the standard
 

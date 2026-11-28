@@ -17,6 +17,7 @@ Set up this repo to the Engineering Memory Standard. Work in phases and STOP for
 - Find all CLAUDE.md files, .claude/ config, and existing docs.
 - Map modules, entry points, data flow, stack, how tests run.
 - Per module (one at a time; use subagents for wide searches), reconstruct the iterations of the logic from: code, `git log --stat`, `git log -p`, `git log -L` on core functions, reverts, merged PR descriptions (`gh pr list --state merged`, `gh pr view`), code comments, existing docs.
+- Find existing diagrams (.tldr, .tldraw, .drawio, .excalidraw, images, Mermaid blocks) and note which are outdated.
 - Find dead or half-replaced logic, symptom-level patches, and past reverts/corrections (candidate lessons).
 
 ## Phase 2 — Report and propose (no changes)
@@ -29,7 +30,7 @@ Set up this repo to the Engineering Memory Standard. Work in phases and STOP for
 - Branch `chore/project-memory`.
 - NEVER delete existing information: move it, park anything uncertain under "## To review", and show what moved where.
 - Copy STANDARD.md to docs/ENGINEERING-STANDARD.md. Create every docs/ folder with its template.md (from templates/) and a README.md index where useful.
-- Backfill: ADRs per major decision (old ones marked Superseded), feature docs with Evolution tables, algorithm docs for non-trivial logic, bug records for significant past fixes, lessons for past corrections, glossary, architecture overview. Evidence only; unknown reasons → "Reason unknown, confirm with team".
+- Backfill: ADRs per major decision (old ones marked Superseded), feature docs with Evolution tables, algorithm docs for non-trivial logic, bug records for significant past fixes, lessons for past corrections, glossary, architecture overview with Mermaid diagrams. Create docs/architecture/boards/ (with template.md from templates/board.md); convert any existing .tldr/.tldraw files you find into boards with .md summaries. Do not draw new tldraw boards during bootstrap unless I ask; offer /engineering-memory:diagram for key flows. Evidence only; unknown reasons → "Reason unknown, confirm with team".
 - Write root CLAUDE.md (under ~150 lines) and module CLAUDE.md files (templates/module-claude.md).
 - Create docs/todo-debt.md listing dead code and deferred cleanups. Do NOT remove code yet.
 - Create approved git tags.

@@ -39,7 +39,8 @@ docs/
   README.md                   # map of all docs
   ENGINEERING-STANDARD.md     # this file
   glossary.md
-  architecture/
+  architecture/               # overview.md with Mermaid diagrams
+    boards/                   # <slug>.tldr + <slug>.svg + <slug>.md summary
   features/<feature>.md       # how it works + Evolution table
   algorithms/<name>.md
   adr/                        # NNNN-title.md, README.md index, template.md
@@ -66,6 +67,8 @@ docs/
 | Shortcut accepted | — | todo-debt.md | — |
 | Release | CHANGELOG | CHANGELOG entry, git tag | — |
 | Session ends mid-task | — | sessions/ handoff | — |
+| Architecture or flow changes | architecture/, boards/*.md | Mermaid diagram; redraw affected boards (/diagram) | — |
+| Board edited by a person | the board | its .md summary and the Mermaid diagram | — |
 
 ### Debugging protocol
 1. Reproduce; write a failing test.
@@ -77,10 +80,16 @@ docs/
 
 A workaround is allowed only with an ADR or todo-debt entry explaining why the real fix is deferred.
 
+### Diagrams
+- Mermaid inside Markdown is the source of truth: it diffs cleanly, renders on GitHub, and Claude can read it.
+- tldraw boards (docs/architecture/boards/) are for whiteboarding and reviews. Each `.tldr` has an exported `.svg` and a `.md` summary (templates/board.md).
+- Export only with `@kitschpatrol/tldraw-cli export <file> --local`; without `--local` the file is uploaded to tldraw.com.
+- The tldraw desktop app does not merge external changes into an open file: close boards before `git pull` or switching branches.
+
 ## 5. Claude Code integration
 
 - **Layer 1 — CLAUDE.md:** root file under ~150 lines with the mandatory rules block (templates/root-claude-rules.md); a module CLAUDE.md per major folder.
-- **Layer 2 — commands:** /engineering-memory:bootstrap, :debug, :decide, :feature-history, :lesson, :handoff, :audit-docs.
+- **Layer 2 — commands:** /engineering-memory:bootstrap, :debug, :decide, :feature-history, :lesson, :handoff, :audit-docs, :diagram.
 - **Layer 3 — hooks:** Stop hook blocks "done" once when code changed without doc updates; SessionStart hook shows the latest handoff note. Both are no-ops in repos without docs/adr/.
 - **Habits:** plan mode for investigation; /handoff before /compact; subagents for wide searches.
 

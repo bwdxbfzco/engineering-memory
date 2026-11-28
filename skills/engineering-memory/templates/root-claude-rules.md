@@ -8,3 +8,4 @@ This repo follows docs/ENGINEERING-STANDARD.md (engineering-memory plugin).
 - Never delete docs content; never invent reasons ("Reason unknown, confirm with team").
 - Docs ship in the same commit. Commit: <type>(<module>): <what> — <why> [ADR-NNNN].
 - Before ending a long session: /engineering-memory:handoff.
+- Diagrams: Mermaid in docs is the source of truth; tldraw boards live in docs/architecture/boards/ with .svg + .md summary (/engineering-memory:diagram). Export only with --local.

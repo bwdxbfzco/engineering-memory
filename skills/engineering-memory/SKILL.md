@@ -15,7 +15,8 @@ Full standard: `STANDARD.md` in this skill folder. Templates: `templates/` in th
 | CLAUDE.md (root) | Purpose, module map, rules, pointers (under ~150 lines) |
 | <module>/CLAUDE.md | Current design, Invariants, Known traps, related ADRs |
 | docs/glossary.md | Domain terms and business rules |
-| docs/architecture/ | Overview, diagrams, data model, integrations |
+| docs/architecture/ | Overview, Mermaid diagrams, data model, integrations |
+| docs/architecture/boards/ | tldraw boards (.tldr) + exported .svg + .md summary each |
 | docs/features/<f>.md | How a feature works now + Evolution table (v1, v2, ...) |
 | docs/algorithms/<a>.md | Non-trivial logic step by step, edge cases, tests |
 | docs/adr/NNNN-*.md | Decisions: context, decision, alternatives, consequences, status |
@@ -62,6 +63,13 @@ Check feature Evolution → ADRs → `git log -L`, `git show <tag-or-commit>:<fi
 ## Mistakes
 
 When you (or a reviewer or a test) find that earlier logic or approach was wrong: write docs/lessons/NNNN (templates/lesson.md) with what was wrong, why it happened, impact, rectification, and a one-line prevention rule. Add that rule to the module CLAUDE.md "Known traps". Never delete or soften lessons.
+
+## Diagrams
+
+- Mermaid inside Markdown is the source of truth; tldraw boards are visual companions (`/engineering-memory:diagram`).
+- Every `.tldr` board has a matching `.md` summary and `.svg` export in docs/architecture/boards/. When a board changes, update its summary and the Mermaid diagram; when the architecture changes, update the Mermaid diagram and flag boards that need redrawing.
+- Read the `.md` summary, not the raw `.tldr` JSON, to understand a board.
+- Export with tldraw-cli ONLY with `--local`. Never send a repo's diagrams to a hosted tldraw service without explicit approval.
 
 ## Rules that never bend
 

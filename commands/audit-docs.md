@@ -10,6 +10,7 @@ Audit this repo against the Engineering Memory Standard and report (do not chang
 3. Commits in the last 3 months that changed logic/data model with no ADR, and fix commits with no bug record.
 4. ADR hygiene: duplicate numbers, broken links, Superseded ADRs that do not name a successor, index out of date.
 5. Code flagged DEPRECATED or listed in todo-debt.md that is now safe to remove.
-6. Old docs/sessions/ notes for finished work (propose archiving).
-7. Contradictions between CLAUDE.md files and the code.
+6. Boards: .tldr files without a matching .md summary or .svg export; boards whose .tldr changed after their .md (compare git log dates); Mermaid diagrams that no longer match the code.
+7. Old docs/sessions/ notes for finished work (propose archiving).
+8. Contradictions between CLAUDE.md files and the code.
 Output a prioritised fix list, then wait for approval.
